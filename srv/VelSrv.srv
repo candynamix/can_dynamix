@@ -1,0 +1,4 @@
+float32 vel_linear
+float32 vel_angular
+---------------------------------
+bool is_vel_received

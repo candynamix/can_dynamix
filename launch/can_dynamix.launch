@@ -1,0 +1,24 @@
+<launch>
+
+
+
+  <node pkg="can_dynamix" type="can_video_load" name="can_video_load" output="screen">
+  </node>
+
+  <node pkg="can_dynamix" type="can_findred" name="can_findred" output="screen">
+  </node>
+
+  <node pkg="can_dynamix_blockbar" type="blockbar" name="blockbar" output="screen">
+  </node>
+
+
+  <include file="$(find find_object_2d)/launch/find_object_2d.launch"/>
+
+  <node pkg="can_dynamix" type="can_driving_node" name="can_driving_node" output="screen">
+  </node>
+
+  <node pkg="can_dynamix" type="can_control" name="can_control" output="screen">
+  </node>
+
+
+</launch>

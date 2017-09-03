@@ -1,0 +1,7 @@
+<launch>
+
+  <node pkg="can_dynamix" type="can_video_load" name="can_video_load" output="screen">
+  </node>
+
+
+</launch>
