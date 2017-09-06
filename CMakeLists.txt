@@ -110,5 +110,8 @@ add_executable(can_blockbar src/can_blockbar.cpp include/can_dynamix/Object.cpp)
 target_link_libraries(can_blockbar ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 add_dependencies(can_blockbar can_dynamix_generate_messages_cpp)
 
+add_executable(can_lidar src/can_lidar_node.cpp )
+target_link_libraries(can_lidar ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_dependencies(can_lidar can_dynamix_generate_messages_cpp)
 
 
