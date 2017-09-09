@@ -62,6 +62,9 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <can_dynamix/FindredMsg.h>
 #include <can_dynamix_blockbar/VelMsg.h>
+#include "std_msgs/MultiArrayLayout.h"
+#include "std_msgs/Float32MultiArray.h"
+#define QSIZE 50
 
 //using namespace std; 
 //namespace can_dynamix{
@@ -70,6 +73,8 @@
 
 	std::string cmsg, lmsg, rmsg, bmsg;
     	geometry_msgs::Twist cmd; 
+        int mark_id; 
+
 
 void getmsg_Callback(const std_msgs::String::ConstPtr& c_msg)
 {
@@ -86,6 +91,40 @@ void lane_Callback(const std_msgs::String::ConstPtr& lane_msg)
 }
 
 
+void lidar_Callback(const std_msgs::String::ConstPtr& lidar_msg)
+{
+	ROS_INFO("lidar range message [%s] ", lidar_msg->data.c_str()); 
+
+}
+
+
+void mark_Callback(const std_msgs::Float32MultiArray & mark_msg)
+{
+
+    if(mark_msg.data.size())
+    {
+		for(unsigned int i=0; i<mark_msg.data.size(); i+=12)
+		{
+			// get data
+			mark_id = (int)mark_msg.data[i];
+ #ifdef test
+  	                ROS_INFO("mark detected message [%d] ", mark_id); 
+  	                ROS_INFO("mark 0 [%d] ", (int)mark_msg.data[0]); 
+  	                ROS_INFO("mark 1 [%f] ", mark_msg.data[1]); 
+  	                ROS_INFO("mark 2 [%f] ", mark_msg.data[2]); 
+  	                ROS_INFO("mark 3 [%f] ", mark_msg.data[3]); 
+  	                ROS_INFO("mark 4 [%f] ", mark_msg.data[4]); 
+ #endif
+		}
+    }
+    else
+    {
+//    	printf("No objects detected.\n");
+        mark_id  = 0;
+    }
+}
+
+
 void findred_Callback(const can_dynamix::FindredMsg::ConstPtr& red_msg)
 {
  #ifdef test
@@ -94,7 +133,7 @@ void findred_Callback(const can_dynamix::FindredMsg::ConstPtr& red_msg)
  #endif
 }
 
-//void blockbar_Callback(const std_msgs::String::ConstPtr& bar_msg)
+
 void blockbar_Callback(const can_dynamix_blockbar::VelMsg::ConstPtr& bar_msg)
 {
  #ifdef test
@@ -119,21 +158,24 @@ void remocon_Callback(const std_msgs::String::ConstPtr& comm_msg)
 	}
  #ifdef test
 	ROS_INFO("remocon cmd message [%s] ", comm_msg->data.c_str());   // c_str()문자열스트링 
+
  #endif
 }
 
 int main(int argc, char **argv)
 {
 
-	ros::init(argc,argv,"can_control_node");
+	ros::init(argc,argv,"can_control");
 	ros::NodeHandle n;
-	ros::Publisher msg_pub = n.advertise<std_msgs::String>("topic_message",1000);
-	ros::Publisher vel_pub = n.advertise<geometry_msgs::Twist>("cmd_vel",100);
-//	ros::Subscriber sub = n.subscribe("topic_message", 1000,getmsg_Callback);
-	ros::Subscriber lane_sub = n.subscribe("can_dynamix/lane", 1000,lane_Callback);
-	ros::Subscriber findred_sub = n.subscribe("can_dynamix/findred", 1000,findred_Callback);
-	ros::Subscriber blockbar_sub = n.subscribe("can_dynamix/blockbar", 1000,blockbar_Callback);
-	ros::Subscriber remocon_sub = n.subscribe("can_dynamix/command", 1000,remocon_Callback);
+	ros::Publisher msg_pub = n.advertise<std_msgs::String>("topic_message",QSIZE);
+	ros::Publisher vel_pub = n.advertise<geometry_msgs::Twist>("cmd_vel",QSIZE);
+//	ros::Subscriber sub = n.subscribe("topic_message", QSIZE,getmsg_Callback);
+        ros::Subscriber lidarScan_sub =n.subscribe("can_dynamix/lidar",QSIZE, lidar_Callback); 
+	ros::Subscriber lane_sub      = n.subscribe("can_dynamix/lane", QSIZE,lane_Callback);
+	ros::Subscriber findred_sub   = n.subscribe("can_dynamix/findred", QSIZE,findred_Callback);
+	ros::Subscriber mark_sub      = n.subscribe("objects", QSIZE,mark_Callback);
+	ros::Subscriber blockbar_sub  = n.subscribe("can_dynamix/blockbar", QSIZE,blockbar_Callback);
+	ros::Subscriber remocon_sub   = n.subscribe("can_dynamix/command", QSIZE,remocon_Callback);
 	ros::Rate loop_rate(10);
 
 
@@ -157,7 +199,12 @@ int main(int argc, char **argv)
 	   if (cmsg == "start" && (lmsg == "go" || lmsg == "go" || rmsg == "go" || bmsg == "go")) 
 		 cmd.linear.x = 0.040; 
 
-	   msg_pub.publish(msg);
+           if(mark_id == 1)	ROS_INFO("parking Mode ");
+           if(mark_id == 2)	ROS_INFO("blockbar Mode "); 
+           if(mark_id == 3)	ROS_INFO("turnel Mode ");            
+           if(mark_id == 4)	ROS_INFO("slow Mode ");
+
+//	   msg_pub.publish(msg);
 	   vel_pub.publish(cmd);
 
 	   ros::spinOnce();
