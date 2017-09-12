@@ -56,6 +56,7 @@ int angle_D;
 
 void lidarScanCallback(const sensor_msgs::LaserScan::ConstPtr& scanValue)
 {
+/*
    cout << "angle_min  " << scanValue -> angle_min<< "         deg =" <<  scanValue -> angle_min *180/3.14 << endl;
    cout << "angle_max  " << scanValue -> angle_max<< "   deg =" <<  scanValue -> angle_max *180/3.14 << endl;
    cout << "angle_increment  " << scanValue -> angle_increment<< endl;
@@ -90,7 +91,7 @@ void lidarScanCallback(const sensor_msgs::LaserScan::ConstPtr& scanValue)
    cout << "range dist 329= " << scanValue -> ranges[329] << endl;
    cout << "range dist 331= " << scanValue -> ranges[331] << endl;
    cout << "range dist 332= " << scanValue -> ranges[332] << endl;
-
+*/
 
   double lidar_angle;
 
