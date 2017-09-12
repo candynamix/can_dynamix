@@ -1,21 +1,13 @@
-/*
-#include <ros/ros.h>
-#include <sensor_msgs/LaserScan.h>
-#include <iostream>
-#include <opencv2/opencv.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <cmath>
-#include <std_msgs/UInt16.h>
-*/
 
 #include <ros/ros.h>
 #include <sensor_msgs/LaserScan.h>
+#include <iostream>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <std_msgs/UInt16.h>
-#include <nav_msgs/Odometry.h>
-#include <iostream>
 #include <cmath>
+#include <std_msgs/UInt16.h>
+
+#include "std_msgs/String.h"
 
 //#define Test
 #define QSIZE 10
@@ -109,14 +101,12 @@ void lidarScanCallback(const sensor_msgs::LaserScan::ConstPtr& scanValue)
 }
 
 
-
-
 int main (int argc, char **argv)
 {
 
   ros::init(argc, argv, "can_lidar_node");
   ros::NodeHandle n;
-//  ros::Publisher lidar_pub = n.advertise<std_msgs::String>("lidar_detect",100);
+  ros::Publisher lidar_pub = n.advertise<std_msgs::String>("can_dynamix/lidar",10);
   ros::Subscriber lidarScan_sub = n.subscribe("scan", QSIZE, lidarScanCallback);
 
   ros::spin();
