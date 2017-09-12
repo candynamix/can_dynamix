@@ -123,12 +123,27 @@ int main(int argc, char **argv)
 	{
 	   std_msgs::String msg;
 	   std::stringstream ss;
-	   ss<< "This Topic message from  Can_dynamix control ";
-	   msg.data = ss.str();  
-//	   if(mark_id == 1) ROS_INFO (" Parking AREA !! ") ;
-//	   if(mark_id == 3) ROS_INFO (" TUNELL AREA !! ") ;
-	   msg_pub.publish(msg);
+//	   ss<< "This Topic message from  Can_dynamix findmark ";
 
+	   if(mark_id == 1) {
+             ROS_INFO (" Parking AREA !! ") ;
+              ss << mark_id;
+            }
+	   if(mark_id == 2) {
+             ROS_INFO (" Railroad !! ") ;
+              ss << mark_id;
+            }
+	   if(mark_id == 3) {
+             ROS_INFO (" TUNELL AREA !! ") ;
+              ss << mark_id;
+            } 
+	   if(mark_id == 4) {
+             ROS_INFO (" Slow Mode !! ") ;
+              ss << mark_id;
+            } 
+	   msg.data = ss.str();  
+	   msg_pub.publish(msg);
+        
 	   ros::spinOnce();
 	   loop_rate.sleep();
 //	   ROS_INFO(" Sleep ");
