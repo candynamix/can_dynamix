@@ -9,7 +9,7 @@
 
 #include "std_msgs/String.h"
 
-//#define Test
+#define test
 #define QSIZE 10
 #define disp_lidar 1
 #define WAITKEYSIZE 
@@ -25,6 +25,8 @@ int robotMode = NORMAL_MODE;
 
 using namespace std;
 using namespace cv;
+
+
 
 /*
 double object_angle;
@@ -48,7 +50,8 @@ int angle_D;
 
 void lidarScanCallback(const sensor_msgs::LaserScan::ConstPtr& scanValue)
 {
-/*
+
+   #ifdef test	
    cout << "angle_min  " << scanValue -> angle_min<< "         deg =" <<  scanValue -> angle_min *180/3.14 << endl;
    cout << "angle_max  " << scanValue -> angle_max<< "   deg =" <<  scanValue -> angle_max *180/3.14 << endl;
    cout << "angle_increment  " << scanValue -> angle_increment<< endl;
@@ -83,19 +86,31 @@ void lidarScanCallback(const sensor_msgs::LaserScan::ConstPtr& scanValue)
    cout << "range dist 329= " << scanValue -> ranges[329] << endl;
    cout << "range dist 331= " << scanValue -> ranges[331] << endl;
    cout << "range dist 332= " << scanValue -> ranges[332] << endl;
-*/
+   #endif
 
   double lidar_angle;
 
 
   for ( angle_D = 330; angle_D < 360; angle_D++) {   // 전방 우측면 30도각 탐지
     length = (float)((scanValue->ranges[angle_D]));
-    ROS_INFO("Right [%d] length [%f] ", angle_D, length); 
+    #ifdef test
+    	ROS_INFO("F-Right [%d] length [%f] ", angle_D, length); 
+    #endif 
   }
 
   for (angle_D = 0; angle_D < 30; angle_D++) { // 전방 좌측면 30도각 탐지 
     length = (float)((scanValue->ranges[angle_D]));
-    ROS_INFO("Left  [%d] length [%f] ", angle_D, length);  
+    #ifdef test
+    	ROS_INFO("F-Left  [%d] length [%f] ", angle_D, length);  
+    #endif 
+  }
+
+
+  for ( angle_D = 240; angle_D < 300; angle_D++) {   // 우측면 60도각 탐지
+    length = (float)((scanValue->ranges[angle_D]));
+    #ifdef test
+    	ROS_INFO("Right [%d] length [%f] ", angle_D, length); 
+    #endif 
   }
 
 }
@@ -108,9 +123,6 @@ int main (int argc, char **argv)
   ros::NodeHandle n;
   ros::Publisher lidar_pub = n.advertise<std_msgs::String>("can_dynamix/lidar",10);
   ros::Subscriber lidarScan_sub = n.subscribe("scan", QSIZE, lidarScanCallback);
-
   ros::spin();
-
-
-return 0;
+  return 0;
 }
