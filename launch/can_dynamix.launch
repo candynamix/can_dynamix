@@ -8,7 +8,7 @@
   <node pkg="can_dynamix" type="can_findred" name="can_findred" output="screen">
   </node>
 
-  <node pkg="can_dynamix_blockbar" type="blockbar" name="blockbar" output="screen">
+  <node pkg="can_dynamix" type="blockbar" name="blockbar" output="screen">
   </node>
 
 
