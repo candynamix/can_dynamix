@@ -61,7 +61,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <can_dynamix/FindredMsg.h>
-#include <can_dynamix_blockbar/VelMsg.h>
+#include <can_dynamix/BlockMsg.h>
 #include "std_msgs/MultiArrayLayout.h"
 #include "std_msgs/Float32MultiArray.h"
 #define QSIZE 50
@@ -134,7 +134,7 @@ void findred_Callback(const can_dynamix::FindredMsg::ConstPtr& red_msg)
 }
 
 
-void blockbar_Callback(const can_dynamix_blockbar::VelMsg::ConstPtr& bar_msg)
+void blockbar_Callback(const can_dynamix::BlockMsg::ConstPtr& bar_msg)
 {
  #ifdef test
 	ROS_INFO("blockbar message [%s] ", bar_msg->sign_result.c_str()); 
