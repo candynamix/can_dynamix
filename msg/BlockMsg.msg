@@ -1,0 +1,2 @@
+string sign_result
+
