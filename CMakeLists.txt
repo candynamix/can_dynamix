@@ -37,7 +37,7 @@ endif()
 add_message_files(DIRECTORY msg
   FILES
   FindredMsg.msg
-   VelMsg.msg
+  BlockMsg.msg
 )
 
 add_service_files(DIRECTORY srv
@@ -66,18 +66,6 @@ include_directories(
 )
 
 
-#add_executable(can_driver src/can_driver.cpp)
-#target_link_libraries(can_driver ${catkin_LIBRARIES}  ${OpenCV_LIBRARIES})
-#add_dependencies(can_driver can_dynamix_generate_messages_cpp)
-
-
-#add_executable(can_image src/can_image.cpp)
-#target_link_libraries(can_image ${catkin_LIBRARIES}  ${OpenCV_LIBRARIES})
-#add_dependencies(can_image can_dynamix_generate_messages_cpp)
-
-add_executable(can_image_load src/can_image_load.cpp)
-target_link_libraries(can_image_load ${catkin_LIBRARIES}  ${OpenCV_LIBRARIES})
-#add_dependencies(can_image_load can_dynamix_generate_messages_cpp)
 
 
 add_executable(can_video_load src/can_video_load.cpp)
@@ -85,15 +73,9 @@ target_link_libraries(can_video_load ${catkin_LIBRARIES}  ${OpenCV_LIBRARIES})
 #add_dependencies(can_video_load can_dynamix_generate_messages_cpp)
 
 
-
-#add_executable(can_driving src/can_driving.cpp)
-#target_link_libraries(can_driving ${catkin_LIBRARIES}  ${OpenCV_LIBRARIES})
-#add_dependencies(can_driving can_dynamix_generate_messages_cpp)
-
-
 add_executable(can_driving_node src/can_driving_node.cpp)
 target_link_libraries(can_driving_node ${catkin_LIBRARIES}  ${OpenCV_LIBRARIES})
-#add_dependencies(can_driving_node can_dynamix_generate_messages_cpp)
+add_dependencies(can_driving_node can_dynamix_generate_messages_cpp)
 
 
 add_executable(can_findred src/can_findred.cpp)
