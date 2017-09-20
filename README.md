@@ -6,7 +6,7 @@
   ## Introduction
 
   Team Dynamix is a part of group GWANGJU CANROBOT. We get together twice a month to study about robots (include ROS, robot controler and programmings ..)  just for fun.
-  <img src="https://github.com/candynamix/can_dynamix/blob/master/gjcanrobot.jpg" width="300">
+  <img src="https://github.com/candynamix/can_dynamix/blob/master/gjcanrobot.jpg" width="100">
 
 
   ## Overview
