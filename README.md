@@ -16,8 +16,8 @@
   <img src="https://raw.githubusercontent.com/ROBOTIS-GIT/ROBOTIS-Documents/master/wiki-images/Turtlebot3/Turtlebot3_logo.jpg" width="300">
   
   - Turtlebot3 from Robotis
-  - Deps camera: Xtion pro live 
-  - Deps Intel R200 or USB WebCAM : 
+  - Depth camera: Xtion pro live 
+  - Sub Depth Intel R200 or USB WebCAM : 
   - SBC:  Intel¢ç NUC Kit DN2820FYKH (RAM 4GB, SSD 128G, power 12v-3A)  
   - Android WiFi controler (Any Smart Phone or PAD with Android O/S)
 
