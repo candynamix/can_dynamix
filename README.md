@@ -24,17 +24,26 @@
   - SBC:  Intel¢ç NUC Kit DN2820FYKH (RAM 4GB, SSD 128G, power 12v-3A)  
   - Android WiFi controler (Any Smart Phone or PAD with Android O/S)
 
- ## Software platform 
+ ## Software  
   
   - OpenCV  2.4.9  
   - C++
   - ROSJAVA
-
-# User's Guide
-
+  - find-object-2d  
 
 # How to Install 
    - SBC
+     1. git clone https://github.com/candynamix/can_dynamix.git   
+     2. git clone https://github.com/candynamix/find-object.git       
+     4. catkin_make 
+          
    - Android Phone or PAD    
-
+     1. download Apk can_dynamix remocon (https://github.com/candynamix/can_dynamix_remocon/blob/master/android_can_dynamix.apk)
+     2. install to your android phone
+     
 # How to Run
+
+   - roslaunch turtlebot3_bringup turtlebot3_robot.launch
+   - roslaunch can_dynamix can_dynamix.launch 
+
+# User's Guide
