@@ -52,13 +52,17 @@ void lidarScanCallback(const sensor_msgs::LaserScan::ConstPtr& scanValue)
     line(Map, Point(300,300), Point(300+x,300+y), Scalar(255,255,0), 1);  // 라인표시 
     circle(Map, Point(300+x,300+y), 4, Scalar(155,155,155), -1,8,0); // 라인끝 표시 
     if (length < 150 && length > 100) circle (Map, Point(300+x,300+y), 4, Scalar(255,0,0),-1,8,0); // 가까운 점 표시 
-    if (length <= 100) circle (Map, Point(300+x,300+y), 4, Scalar(0,0,255),-1,8,0); // 더 가까운 점 표시 
+    if (length <= 100 && length > 50) circle (Map, Point(300+x,300+y), 4, Scalar(0,0,255),-1,8,0); // 더 가까운 점 표시 
+    if (length <= 50) circle (Map, Point(300+x,300+y), 4, Scalar(0,255,255),-1,8,0); // 더 가까운 점 표시 
 //    if (length <= 100 && length > 0) putText(Map,"Warnig ", cv::Point(300+x,300+y),cv::FONT_HERSHEY_DUPLEX,0.5,CV_RGB(0,0,255),1);
-    line(Map, Point(300,300), Point(300,120), Scalar(0,0,255), 1);  // 헤드라인표시 
-    line(Map, Point(300,300), Point(200,140), Scalar(0,0,255), 1);  // 좌측라인표시 
-    line(Map, Point(300,300), Point(400,140), Scalar(0,0,255), 1);  // 우측라인표시 
-    circle(Map, Point(300,300), 3, Scalar(0,0,255), -1,8,0); //center
-//    circle( in_image, center, 3, color, -1, 8, 0 );   // center
+    line(Map, Point(300,300), Point(300,122), Scalar(50,240,0), 2);  // 헤드라인표시 
+    line(Map, Point(300,300), Point(200,150), Scalar(50,240,0), 2);  // 좌측라인표시 
+    line(Map, Point(300,300), Point(400,150), Scalar(50,240,0), 2);  // 우측라인표시 
+
+    circle(Map, Point(300,300), 3, Scalar(50,240,0), -1,8,0); //center
+    circle(Map, Point(300,300), 100, Scalar(50,240,0), 1,8,0); //center circle
+    circle(Map, Point(300,300), 180, Scalar(50,240,0), 1,8,0); //center circle
+
     putText(Map,"head", cv::Point(290,150),cv::FONT_HERSHEY_DUPLEX,0.5,CV_RGB(255,255,255),1);
 //    cout << "angle = " << i << " length = " << length << endl;
   }
