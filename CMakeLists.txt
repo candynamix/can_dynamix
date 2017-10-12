@@ -96,4 +96,8 @@ add_executable(can_lidar src/can_lidar_node.cpp )
 target_link_libraries(can_lidar ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 add_dependencies(can_lidar can_dynamix_generate_messages_cpp)
 
+add_executable(can_lidar_disp src/can_lidar_disp_node.cpp )
+target_link_libraries(can_lidar_disp ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_dependencies(can_lidar_disp can_dynamix_generate_messages_cpp)
+
 
