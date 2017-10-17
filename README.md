@@ -53,3 +53,5 @@
 ## pictures
 # lidar display
   <img src="https://github.com/candynamix/can_dynamix/blob/master/img/lidar_display01.png" width="300">   
+
+  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/lidar_display02.png" width="300">   
