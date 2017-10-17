@@ -11,7 +11,7 @@
 
 
   ## Overview
-   
+  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/schema.png" width="600">
   <img src="https://github.com/candynamix/can_dynamix/blob/master/candynamix_nodeonly.png" width="900">   
    
    
