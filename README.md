@@ -56,6 +56,11 @@
 
 # blockbar display
 
+# find-object node display
+  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/object-2d.png" width="600">
+  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/find_object01.png" width="600">
+  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/find_object02.png" width="600">
+  
 # driving display
   <img src="https://github.com/candynamix/can_dynamix/blob/master/img/driving_display00.png" width="600">
   <img src="https://github.com/candynamix/can_dynamix/blob/master/img/driving_display02.png" width="600">
