@@ -57,7 +57,7 @@
 # blockbar display
 
 # driving display
-  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/driving_display00.png" width="300">  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/driving_display02.png" width="600">  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/driving_display01.png" width="300">     
+  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/driving_display00.png" width="600">  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/driving_display02.png" width="600">  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/driving_display01.png" width="600">     
 
 # lidar display
-  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/lidar_display01.png" width="300">  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/lidar_display02.png" width="300">   
+  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/lidar_display01.png" width="600">  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/lidar_display02.png" width="600">   
