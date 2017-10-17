@@ -41,9 +41,15 @@
      1. download Apk can_dynamix remocon (https://github.com/candynamix/can_dynamix_remocon/blob/master/android_can_dynamix.apk)
      2. install to your android phone
      
+     
 # How to Run
 
    - roslaunch turtlebot3_bringup turtlebot3_robot.launch
    - roslaunch can_dynamix can_dynamix.launch 
 
 # User's Guide
+
+
+## pictures
+# lidar display
+  <img src="https://github.com/candynamix/can_dynamix/blob/master/img/lidar_display01.png" width="300">   
